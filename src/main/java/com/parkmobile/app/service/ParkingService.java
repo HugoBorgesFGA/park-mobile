@@ -1,11 +1,14 @@
 package com.parkmobile.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.parkmobile.app.entity.Ticket;
 import com.parkmobile.app.model.tokengeneration.TokenGenerationStrategy;
 import com.parkmobile.app.repository.TicketRepository;
 
+@Service
 public class ParkingService {
 	
 	@Autowired
@@ -14,12 +17,15 @@ public class ParkingService {
 	@Autowired
 	private TokenGenerationStrategy tokenGenerator;
 	
-	@Autowired
+	@Value("${parking.tolerance}")
 	private Long toleranceInMinutes;
 	
 	public Ticket emmitTicket() {
 		
-		return tokenGenerator.generateToken(new Ticket());
+		Ticket ticket = tokenGenerator.generateToken(new Ticket());
+		this.ticketRepository.save(ticket);
+		
+		return ticket;
 	}
 	
 	public Ticket getTicket(final String token) {
