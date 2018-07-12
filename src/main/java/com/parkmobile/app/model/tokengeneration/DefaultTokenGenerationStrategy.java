@@ -15,7 +15,7 @@ public class DefaultTokenGenerationStrategy implements TokenGenerationStrategy {
 	public Ticket generateToken(Ticket ticket) {
 		
 		final Timestamp timestamp = Timestamp.valueOf(ticket.getTimeEntry());
-		ticket.setToken(timestamp.toString());
+		ticket.setToken(Integer.toString(timestamp.getNanos(), 36));
 		
 		return ticket;
 	}
