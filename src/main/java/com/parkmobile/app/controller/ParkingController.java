@@ -1,8 +1,7 @@
 package com.parkmobile.app.controller;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ public class ParkingController {
 	}
 	
 	@RequestMapping(value = "ticket/{token}", method = RequestMethod.GET)
-	public Ticket getTicketInfo(@PathParam(value = "") String token) {
+	public Ticket getTicketInfo(@PathVariable String token) {
 		
 		return parkingService.getTicket(token);
 	}
