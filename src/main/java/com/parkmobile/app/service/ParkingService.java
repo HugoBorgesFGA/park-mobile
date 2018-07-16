@@ -17,7 +17,7 @@ public class ParkingService {
 	@Autowired
 	private TokenGenerationStrategy tokenGenerator;
 	
-	@Value("${parking.tolerance}")
+	@Value("${parking.business.tolerance}")
 	private Long toleranceInMinutes;
 	
 	public Ticket emmitTicket() {
