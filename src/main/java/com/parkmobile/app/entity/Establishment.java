@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Establishment{
 	
+	@Value("${parking.info.id}")
+	private Integer id;
+	
 	@Value("${parking.info.name}")
 	private String name;
 	
@@ -18,7 +21,15 @@ public class Establishment{
 	public Establishment() {
 		
 	}
-	
+		
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

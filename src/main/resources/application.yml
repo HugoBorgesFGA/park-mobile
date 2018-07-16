@@ -2,6 +2,7 @@ parking:
 
    info:
  
+      id: 1
       name: "Park Shopping"
       logo: "logo.jpg"
       coordinates: "-15.8337193,-47.95622"
